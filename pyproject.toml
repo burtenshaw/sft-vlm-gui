@@ -1,0 +1,11 @@
+[project]
+name = "sft-vlm-gui-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=3.6.0",
+    "transformers>=4.51.3",
+    "trl>=0.17.0",
+]
