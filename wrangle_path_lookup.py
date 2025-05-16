@@ -68,6 +68,9 @@ def prepare_interleaved_dataset(dataset: Dataset, max_samples: int = 10) -> Data
         if not sample_messages:
             print(f"No messages for sample {n}. Skipping...")
             continue
+        task = sample["task"]
+        instruction = sample["instruction"]
+        app = sample["app"]
         messages = [
             {
                 "role": "system",
@@ -80,6 +83,15 @@ def prepare_interleaved_dataset(dataset: Dataset, max_samples: int = 10) -> Data
             },
             {
                 "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": f"App: {app}\nTask: {task}\nInstruction: {instruction}",
+                    }
+                ],
+            },
+            {
+                "role": "assistant",
                 "content": sample_messages,
             }
         ]
