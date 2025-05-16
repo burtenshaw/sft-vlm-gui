@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: sft_vlm_gemma3",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/sft_vlm_gemma3.py",
+            "args": [
+                "--dataset_name",
+                "OpenGVLab/GUI-Odyssey",
+                "--dataset_train_split",
+                "train",
+                "--model_name_or_path",
+                "google/gemma-3-4b-it",
+                "--per_device_train_batch_size",
+                "1",
+                "--gradient_accumulation_steps",
+                "1",
+                "--output_dir",
+                "gemma-3-4b-it-trl-sft-MMIU-Benchmark",
+                "--bf16",
+                "--torch_dtype",
+                "bfloat16",
+                "--use_peft",
+                "--lora_target_modules",
+                "all-linear",
+                "--attn_implementation",
+                "eager"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
