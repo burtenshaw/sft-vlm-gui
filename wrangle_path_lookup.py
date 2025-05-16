@@ -21,7 +21,7 @@ for obj in data:
     name = path.split("/")[-1]
     SCREENSHOT_PATHS[name] = url
 
-SYSTEM_PROMPT = """YOU ARE JUST GREAT"""
+SYSTEM_PROMPT = open("system_prompt.md").read()
 
 def path_to_url(path: str, idx: int = 0) -> str:
     """
@@ -38,7 +38,7 @@ def prepare_interleaved_dataset(dataset: Dataset, max_samples: int = 10) -> Data
     wrangled_samples = []
 
     for n, sample in enumerate(dataset):
-        if n >= max_samples:
+        if len(wrangled_samples) >= max_samples:
             break
         sample_messages = []
         steps = literal_eval(sample["steps"])
@@ -50,12 +50,13 @@ def prepare_interleaved_dataset(dataset: Dataset, max_samples: int = 10) -> Data
             image_url = path_to_url(image_path)
             if image_url is None:
                 print(f"Image URL not found for {image_path}. Skipping...")
-                continue
+                sample_messages = []
+                break
             step_string = json.dumps(step)
             sample_messages.append(
                 {
                     "type": "image",
-                    "text": image_url,
+                    "image": image_url,
                 }
             )
             sample_messages.append(
@@ -64,10 +65,18 @@ def prepare_interleaved_dataset(dataset: Dataset, max_samples: int = 10) -> Data
                     "text": step_string,
                 }
             )
+        if not sample_messages:
+            print(f"No messages for sample {n}. Skipping...")
+            continue
         messages = [
             {
                 "role": "system",
-                "content": SYSTEM_PROMPT,
+                "content": [
+                    {
+                        "type": "text",
+                        "text": SYSTEM_PROMPT,
+                    }
+                ],
             },
             {
                 "role": "user",
@@ -75,11 +84,14 @@ def prepare_interleaved_dataset(dataset: Dataset, max_samples: int = 10) -> Data
             }
         ]
         new_sample = {**dict(sample)}
-        new_sample["messages"] = messages
-        wrangled_samples.append(sample)
+        new_sample["messages"] = json.dumps(messages)
+        print(f"Adding sample {n}")
+        wrangled_samples.append(new_sample)
     dataset = Dataset.from_list(wrangled_samples)
     return dataset
 
 
 dataset = load_dataset(path="OpenGVLab/GUI-Odyssey", split="all", streaming=True)
 dataset = prepare_interleaved_dataset(dataset, max_samples=10)
+print(dataset[0])
+dataset.save_to_disk("data/mini_dataset")

@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "accelerate>=1.7.0",
     "datasets>=3.6.0",
     "pillow>=11.2.1",
     "transformers>=4.51.3",
