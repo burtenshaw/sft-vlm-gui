@@ -56,8 +56,10 @@ Your output should be 1 step in JSON format, with the following fields: action, 
         }
     ]
 }
+```
 
 ## EXAMPLE OUTPUT
+
 ```json
 {
     "action": "CLICK",
@@ -102,6 +104,7 @@ Your output should be 1 step in JSON format, with the following fields: action, 
 ```
 
 ## EXAMPLE OUTPUT
+
 ```json
 {
     "action": "CLICK",

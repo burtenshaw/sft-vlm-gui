@@ -1,0 +1,130 @@
+[
+    {
+        "action": "CLICK",
+        "info": [
+            [
+                166,
+                279
+            ]
+        ],
+        "ps": ""
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            [
+                166,
+                279
+            ]
+        ],
+        "ps": "Click on DuckDuckGo app"
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            [
+                166,
+                279
+            ]
+        ],
+        "ps": "[(166, 279)]"
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            [
+                166,
+                279
+            ]
+        ],
+        "ps": ""
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            [
+                583,
+                345
+            ],
+            [
+                583,
+                345
+            ]
+        ],
+        "ps": "[(583, 345)]"
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            [
+                166,
+                279
+            ]
+        ],
+        "ps": "Click on the Zillow app icon."
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            [
+                166,
+                279
+            ]
+        ],
+        "ps": "[(166, 279)]"
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            [
+                158,
+                520
+            ]
+        ],
+        "ps": "Click on the 'Search' button"
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            [
+                166,
+                279
+            ]
+        ],
+        "ps": "Click on Zillow"
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            166,
+            279
+        ],
+        "ps": "Click on Zillow app icon"
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            [
+                166,
+                279
+            ]
+        ],
+        "ps": "Clicked on Zillow logo"
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            166,
+            279
+        ],
+        "ps": "Clicked on Zillow app."
+    },
+    {
+        "action": "CLICK",
+        "info": [
+            350,
+            280
+        ],
+        "ps": "Click on Zillow app"
+    }
+]
